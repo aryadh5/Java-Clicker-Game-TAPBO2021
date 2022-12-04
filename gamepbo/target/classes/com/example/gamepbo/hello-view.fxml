@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: coral;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gamepbo.HelloController">
+   <children>
+      <AnchorPane layoutX="100.0" layoutY="79.0" prefHeight="206.0" prefWidth="387.0" style="-fx-background-color: green; -fx-background-radius: 30; -fx-border-style: solid; -fx-border-radius: 30;">
+         <children>
+            <Button fx:id="buttonMulai" layoutX="149.0" layoutY="114.0" mnemonicParsing="false" onAction="#buttonMulaiClicked" prefHeight="29.0" prefWidth="90.0" style="-fx-background-color: orange; -fx-border-style: solid; -fx-background-radius: 20; -fx-border-radius: 20;" text="PLAY">
+               <font>
+                  <Font name="Comic Sans MS" size="12.0" />
+               </font></Button>
+            <Button fx:id="buttonSkor" layoutX="149.0" layoutY="152.0" mnemonicParsing="false" onAction="#buttonSkorClicked" style="-fx-background-color: orange; -fx-border-style: solid; -fx-background-radius: 20; -fx-border-radius: 20;" text="Leaderboard">
+               <font>
+                  <Font name="Comic Sans MS" size="12.0" />
+               </font></Button>
+            <TextField fx:id="boxNama" alignment="CENTER" layoutX="77.0" layoutY="77.0" prefHeight="26.0" prefWidth="233.0" promptText="enter name" />
+            <RadioButton layoutX="59.0" layoutY="45.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="90.0" selected="true" style="-fx-background-color: ORANGE; -fx-background-radius: 20;" text="EASY" textFill="WHITE">
+               <toggleGroup>
+                  <ToggleGroup fx:id="kesulitan" />
+               </toggleGroup>
+               <font>
+                  <Font name="Comic Sans MS Bold" size="12.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="156.0" layoutY="45.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="90.0" style="-fx-background-color: ORANGE; -fx-background-radius: 20;" text="MEDIUM" textFill="YELLOW" toggleGroup="$kesulitan">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="12.0" />
+               </font></RadioButton>
+            <RadioButton layoutX="254.0" layoutY="45.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="90.0" style="-fx-background-color: ORANGE; -fx-background-radius: 20;" text="HARD" textFill="RED" toggleGroup="$kesulitan">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="12.0" />
+               </font></RadioButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="boxSkor" disable="true" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00000052;" visible="false">
+         <children>
+            <Pane layoutX="102.0" layoutY="11.0" prefHeight="378.0" prefWidth="395.0" style="-fx-background-color: white;">
+               <children>
+                  <StackPane fx:id="boxTabel" layoutX="48.0" layoutY="54.0" prefHeight="271.0" prefWidth="299.0">
+                     <children>
+                        <TableView prefHeight="200.0" prefWidth="300.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
+                     </children></StackPane>
+                  <Button fx:id="buttonOkeSkor" layoutX="173.0" layoutY="333.0" mnemonicParsing="false" onAction="#buttonOkeSkorClicked" text="Oke" />
+                  <Label layoutX="162.0" layoutY="25.0" text="Papan Skor" />
+                  <Button fx:id="buttonHapus" layoutX="330.0" layoutY="12.0" mnemonicParsing="false" onAction="#buttonHapusClicked" text="Hapus" />
+               </children></Pane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="boxCanvas" disable="true" style="-fx-background-color: black;" visible="false">
+         <children>
+            <Label fx:id="labelSkor" layoutX="14.0" layoutY="14.0" text="0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelWaktu" layoutX="520.0" text="00:00" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelLevel" alignment="CENTER_RIGHT" layoutX="6.0" layoutY="366.0" text="Level 1" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <Canvas fx:id="canvasGame" height="400.0" onMouseClicked="#canvasOnClick" width="600.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="boxKonfirmasi" disable="true" prefHeight="400.0" prefWidth="600.0" visible="false">
+         <children>
+            <AnchorPane layoutX="200.0" layoutY="122.0" prefHeight="155.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <Label fx:id="labelKonfirmasi" layoutX="35.0" layoutY="50.0" text="Kamu menang!">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="buttonLanjut" layoutX="35.0" layoutY="100.0" mnemonicParsing="false" onAction="#buttonLanjutClicked" text="Lanjut" />
+                  <Button fx:id="buttonKeluar" layoutX="115.0" layoutY="100.0" mnemonicParsing="false" onAction="#buttonKeluarClicked" text="Keluar" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
